@@ -118,6 +118,26 @@
             opacity: 0.8;
         }
         
+        /* Dropdown menu styling */
+        .dropdown-menu {
+            background-color: #0d6efd;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .dropdown-item {
+            color: white;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #0b5ed7;
+            color: white;
+        }
+        
+        .dropdown-item form button {
+            color: white;
+        }
+        
         /* Card styling */
         .card-img-top {
             height: 200px;
@@ -284,6 +304,26 @@
             color: #888;
         }
         
+        /* Alert styling */
+        .alert-fixed {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -332,7 +372,84 @@
 </head>
 <body>
 
-<x-navbar></x-navbar>
+<!-- Navbar Langsung di HTML (tanpa component) -->
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="fas fa-umbrella-beach"></i> Pesona Karangasem
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#destinasi">Destinasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tentang">Tentang</a>
+                </li>
+                
+                @auth
+                    <!-- Jika sudah login -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user me-2"></i> Profil Saya
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-history me-2"></i> Riwayat Kunjungan
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item" style="border: none; background: none; width: 100%; text-align: left;">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <!-- Jika belum login -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white px-3 rounded" href="{{ route('register') }}" style="background: #0d6efd;">
+                            <i class="fas fa-user-plus"></i> Daftar
+                        </a>
+                    </li>
+                @endauth
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Alert untuk notifikasi -->
+@if(session('success'))
+<div class="alert alert-success alert-fixed alert-dismissible fade show" role="alert">
+    <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
+
+@if(session('error'))
+<div class="alert alert-danger alert-fixed alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-circle me-2"></i> {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
 
 <!-- Hero Section dengan Gambar -->
 <section class="hero">
@@ -353,13 +470,18 @@
             @foreach($wisata as $item)
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow">
-                    <img src="{{ $item['gambar'] }}" class="card-img-top" alt="{{ $item['nama'] }}">
+                    <img src="{{ $item['gambar'] }}" class="card-img-top" alt="{{ $item['nama'] }}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item['nama'] }}</h5>
                         <p class="card-text text-muted">
                             <i class="fas fa-map-marker-alt"></i> {{ $item['lokasi'] }}
                         </p>
-                        <p class="card-text">{{ Str::limit($item['deskripsi'], 100) }}</p>
+                        <p class="card-text">
+                            @php
+                                $desc = $item['deskripsi'];
+                                echo strlen($desc) > 100 ? substr($desc, 0, 100) . '...' : $desc;
+                            @endphp
+                        </p>
                         <a href="/destinasi/{{ $item['id'] }}" class="btn btn-primary">Lihat Detail</a>
                     </div>
                 </div>
@@ -385,12 +507,12 @@
                 <p>Karangasem dikenal sebagai kawasan dengan kekayaan budaya yang masih terjaga, mulai dari upacara adat hingga peninggalan kerajaan. Destinasi wisata unggulannya menjadi daya tarik utama bagi wisatawan domestik maupun mancanegara.</p>
                 
                 <ul class="destinasi-list">
-                    <li><i class=></i> Pura Besakih</li>
-                    <li><i class=></i> Tirta Gangga</li>
-                    <li><i class=></i> Pantai Amed</li>
-                    <li><i class=></i> Bukit Asah</li>
-                    <li><i class=></i> Lempuyang Temple</li>
-                    <li><i class=></i> Istana Tampaksiring</li>
+                    <li><i class="fas fa-temple"></i> Pura Besakih</li>
+                    <li><i class="fas fa-water"></i> Tirta Gangga</li>
+                    <li><i class="fas fa-umbrella-beach"></i> Pantai Amed</li>
+                    <li><i class="fas fa-mountain"></i> Bukit Asah</li>
+                    <li><i class="fas fa-temple"></i> Lempuyang Temple</li>
+                    <li><i class="fas fa-landmark"></i> Istana Tampaksiring</li>
                 </ul>
             </div>
             
@@ -412,12 +534,60 @@
     </div>
 </section>
 
-
-<x-footer></x-footer>
-
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5>Pesona Karangasem</h5>
+                <hr>
+                <p>Menjelajahi keindahan alam dan budaya Karangasem, Bali Timur.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5>Link Cepat</h5>
+                <hr>
+                <ul class="footer-links">
+                    <li><a href="#destinasi">Destinasi Wisata</a></li>
+                    <li><a href="#tentang">Tentang Karangasem</a></li>
+                    @auth
+                        <li><a href="#">Profil Saya</a></li>
+                    @else
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Daftar</a></li>
+                    @endauth
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5>Kontak</h5>
+                <hr>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Karangasem, Bali, Indonesia</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@pesonakarangasem.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+62 123 4567 890</span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <small>&copy; 2024 Pesona Karangasem. All rights reserved.</small>
+        </div>
+    </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    // Navbar scroll effect
     window.addEventListener('scroll', function() {
         var navbar = document.getElementById('navbar');
         if (window.scrollY > 50) {
@@ -426,6 +596,15 @@
             navbar.classList.remove('scrolled');
         }
     });
+    
+    // Auto close alert after 3 seconds
+    setTimeout(function() {
+        var alerts = document.querySelectorAll('.alert-fixed');
+        alerts.forEach(function(alert) {
+            var bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 3000);
 </script>
 </body>
 </html>
