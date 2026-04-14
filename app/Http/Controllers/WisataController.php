@@ -8,21 +8,19 @@ class WisataController extends Controller
 {
     public function index()
     {
-        // Data dummy wisata Karangasem dengan gambar Picsum
+        // Data dummy wisata Karangasem (7 wisata untuk halaman home)
         $wisata = [
             [
-            'id' => 1,
-            'nama' => 'Pura Besakih',
-            'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali".',
-            'lokasi' => 'Kecamatan Rendang, Karangasem',
-            'kategori' => 'Pura',
-            'harga' => 'Rp 25.000',
-            'jam_buka' => '08:00 - 18:00',
-            'gambar' => '/images/pura-besakih.jpg',
-            'gambar2' => '/images/pura-besakih.jpg',
-            'gambar3' => '/images/pura-besakih.jpg',
-            'rating' => 4.9,
-            'fasilitas' => ['Parkir Luas', 'Toilet', 'Warung Makan', 'Pemandu Wisata']
+                'id' => 1,
+                'nama' => 'Pura Besakih',
+                'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali".',
+                'lokasi' => 'Kecamatan Rendang, Karangasem',
+                'kategori' => 'Pura',
+                'harga' => 'Rp 25.000',
+                'jam_buka' => '08:00 - 18:00',
+                'gambar' => '/images/pura-besakih.jpg',
+                'rating' => 4.9,
+                'fasilitas' => ['Parkir Luas', 'Toilet', 'Warung Makan', 'Pemandu Wisata']
             ],
             [
                 'id' => 2,
@@ -32,8 +30,9 @@ class WisataController extends Controller
                 'kategori' => 'Taman Air',
                 'harga' => 'Rp 20.000',
                 'jam_buka' => '07:00 - 19:00',
-                'gambar' => '/images/tirta-gangga-bali-gambar1', // Foto air/kolam
-                'rating' => 4.7
+                'gambar' => '/images/tirta-gangga-pinterest.jpg',
+                'rating' => 4.7,
+                'fasilitas' => ['Kolam Renang', 'Toilet', 'Restoran', 'Spot Foto']
             ],
             [
                 'id' => 3,
@@ -43,8 +42,9 @@ class WisataController extends Controller
                 'kategori' => 'Pantai',
                 'harga' => 'Rp 10.000',
                 'jam_buka' => '24 Jam',
-                'gambar' => '/images/pantai-amed.jpg', // Foto pantai
-                'rating' => 4.6
+                'gambar' => '/images/pantai-amed.jpg',
+                'rating' => 4.6,
+                'fasilitas' => ['Snorkeling', 'Diving', 'Penginapan', 'Warung Makan']
             ],
             [
                 'id' => 4,
@@ -54,8 +54,9 @@ class WisataController extends Controller
                 'kategori' => 'Bukit',
                 'harga' => 'Rp 15.000',
                 'jam_buka' => '06:00 - 20:00',
-                'gambar' => '/images/bukit-asah-sunset-Ai.png', // Foto bukit/gunung
-                'rating' => 4.5
+                'gambar' => '/images/bukit-asah-sunset-Ai.png',
+                'rating' => 4.5,
+                'fasilitas' => ['Area Camping', 'Toilet', 'Warung', 'Spot Sunrise']
             ],
             [
                 'id' => 5,
@@ -65,8 +66,9 @@ class WisataController extends Controller
                 'kategori' => 'Pura',
                 'harga' => 'Rp 30.000',
                 'jam_buka' => '06:00 - 18:00',
-                'gambar' => '/images/lempuyangan-temple.jpg', // Foto pura/kuil
-                'rating' => 4.8
+                'gambar' => '/images/lempuyangan-temple.jpg',
+                'rating' => 4.8,
+                'fasilitas' => ['Area Parkir', 'Toilet', 'Warung', 'Penyewaan Kain']
             ],
             [
                 'id' => 6,
@@ -76,8 +78,21 @@ class WisataController extends Controller
                 'kategori' => 'Sejarah',
                 'harga' => 'Gratis',
                 'jam_buka' => '08:00 - 16:00',
-                'gambar' => '/images/istana-tampak siring.jpg', // Foto bangunan
-                'rating' => 4.4
+                'gambar' => '/images/istana-tampaksiring-new.jpg',
+                'rating' => 4.4,
+                'fasilitas' => ['Taman', 'Museum', 'Pemandu', 'Area Parkir']
+            ],
+            [
+                'id' => 7,
+                'nama' => 'Air Terjun Tukad Cepung',
+                'deskripsi' => 'Air terjun tersembunyi dengan dinding bebatuan yang megah. Sinar matahari menembus celah bebatuan menciptakan efek cahaya yang dramatis.',
+                'lokasi' => 'Kecamatan Bangli, Karangasem',
+                'kategori' => 'Air Terjun',
+                'harga' => 'Rp 15.000',
+                'jam_buka' => '08:00 - 17:00',
+                'gambar' => '/images/tukad-cepung-gambar2.jpg',
+                'rating' => 4.8,
+                'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Spot Foto']
             ]
         ];
 
@@ -86,26 +101,26 @@ class WisataController extends Controller
 
     public function detail($id)
     {
-        // Data dummy lengkap dengan fasilitas
-$wisata = [
-    [
-        'id' => 1,
-        'nama' => 'Pura Besakih',
-        'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali". Kompleks pura ini terdiri dari 22 pura yang tersebar di area seluas 3 hektar. Pura utama yang paling disucikan adalah Pura Penataran Agung.',
-        'lokasi' => 'Kecamatan Rendang, Karangasem',
-        'kategori' => 'Pura',
-        'harga' => 'Rp 25.000',
-        'jam_buka' => '08:00 - 18:00',
-        'gambar' => '/images/Pura-besakih-gambar1.jpg',
-        'gambar2' => '/images/pura-besakih-gambar4.jpg',
-        'gambar3' => '/images/pura-besakih-gambar3.jpg',
-        'rating' => 4.9,
-        'fasilitas' => ['Parkir Luas', 'Toilet', 'Warung Makan', 'Pemandu Wisata']
+        // Data wisata lengkap untuk halaman detail (7 wisata)
+        $wisata = [
+            [
+                'id' => 1,
+                'nama' => 'Pura Besakih',
+                'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali". Kompleks pura ini terdiri dari 22 pura yang tersebar di area seluas 3 hektar. Pura utama yang paling disucikan adalah Pura Penataran Agung.',
+                'lokasi' => 'Kecamatan Rendang, Karangasem',
+                'kategori' => 'Pura',
+                'harga' => 'Rp 25.000',
+                'jam_buka' => '08:00 - 18:00',
+                'gambar' => '/images/Pura-besakih-gambar1.jpg',
+                'gambar2' => '/images/pura-besakih-gambar4.jpg',
+                'gambar3' => '/images/pura-besakih-gambar3.jpg',
+                'rating' => 4.9,
+                'fasilitas' => ['Parkir Luas', 'Toilet', 'Warung Makan', 'Pemandu Wisata']
             ],
             [
                 'id' => 2,
                 'nama' => 'Tirta Gangga',
-                'deskripsi' => 'Taman air bersejarah dengan kolam pemandian suci dan arsitektur yang indah.Tirta Gangga dibangun pada tahun 1946 oleh Raja Karangasem, Anak Agung Anglurah Ketut Karangasem. Nama "Tirta Gangga" berarti "air dari Sungai Gangga" yang dipercaya memiliki khasiat penyucian. Tempat ini memadukan arsitektur Bali dan China dengan patung-patung dewa yang menghiasi taman. Terdapat kolam renang alami yang bisa digunakan pengunjung untuk berendam di air yang dianggap suci. Kolam ikan dengan ribuan ikan koi yang besar-besar menjadi daya tarik tersendiri. Taman ini sangat cocok untuk bersantai sambil menikmati pemandangan Gunung Agung yang megah.',
+                'deskripsi' => 'Taman air bersejarah dengan kolam pemandian suci dan arsitektur yang indah. Tirta Gangga dibangun pada tahun 1946 oleh Raja Karangasem, Anak Agung Anglurah Ketut Karangasem. Nama "Tirta Gangga" berarti "air dari Sungai Gangga" yang dipercaya memiliki khasiat penyucian.',
                 'lokasi' => 'Kecamatan Abang, Karangasem',
                 'kategori' => 'Taman Air',
                 'harga' => 'Rp 20.000',
@@ -119,7 +134,7 @@ $wisata = [
             [
                 'id' => 3,
                 'nama' => 'Pantai Amed',
-                'deskripsi' => 'Pantai dengan pemandangan indah dan spot snorkeling terbaik, Memiliki hamparan pasir hitam dan pemandangan Gunung Agung di kejauhan. Surga bagi penyelam dengan keindahan terumbu karang dan kapal karam.',
+                'deskripsi' => 'Pantai dengan pemandangan indah dan spot snorkeling terbaik. Memiliki hamparan pasir hitam dan pemandangan Gunung Agung di kejauhan. Surga bagi penyelam dengan keindahan terumbu karang dan kapal karam.',
                 'lokasi' => 'Kecamatan Abang, Karangasem',
                 'kategori' => 'Pantai',
                 'harga' => 'Rp 10.000',
@@ -133,7 +148,7 @@ $wisata = [
             [
                 'id' => 4,
                 'nama' => 'Bukit Asah',
-                'deskripsi' => 'Bukit dengan pemandangan laut lepas dan sunrise yang cantik.Tempat camping favorit dengan view laut dan bukit yang hijau. Cocok untuk menikmati matahari terbit dan berkemah bersama keluarga.',
+                'deskripsi' => 'Bukit dengan pemandangan laut lepas dan sunrise yang cantik. Tempat camping favorit dengan view laut dan bukit yang hijau. Cocok untuk menikmati matahari terbit dan berkemah bersama keluarga.',
                 'lokasi' => 'Kecamatan Bebandem, Karangasem',
                 'kategori' => 'Bukit',
                 'harga' => 'Rp 15.000',
@@ -147,7 +162,7 @@ $wisata = [
             [
                 'id' => 5,
                 'nama' => 'Lempuyang Temple',
-                'deskripsi' => 'Pura di ketinggian dengan gerbang surga yang ikonik.Terkenal dengan "Gates of Heaven" yang menjadi spot foto populer. Untuk mencapai puncak, pengunjung harus mendaki sekitar 1700 anak tangga.',
+                'deskripsi' => 'Pura di ketinggian dengan gerbang surga yang ikonik. Terkenal dengan "Gates of Heaven" yang menjadi spot foto populer. Untuk mencapai puncak, pengunjung harus mendaki sekitar 1700 anak tangga.',
                 'lokasi' => 'Kecamatan Abang, Karangasem',
                 'kategori' => 'Pura',
                 'harga' => 'Rp 30.000',
@@ -161,16 +176,30 @@ $wisata = [
             [
                 'id' => 6,
                 'nama' => 'Istana Tampaksiring',
-                'deskripsi' => 'Istana presiden dengan arsitektur perpaduan Bali dan modern.',
+                'deskripsi' => 'Istana presiden dengan arsitektur perpaduan Bali dan modern. Dibangun pada masa pemerintahan Presiden Soekarno dan digunakan sebagai tempat peristirahatan presiden.',
                 'lokasi' => 'Kecamatan Tampaksiring, Karangasem',
                 'kategori' => 'Sejarah',
                 'harga' => 'Gratis',
                 'jam_buka' => '08:00 - 16:00',
-                'gambar' => '/images/istana-tampak siring.jpg',
-                'gambar2' => '/images/istana-tampak siring.jpg',
-                'gambar3' => '/images/istana-tampak siring.jpg',
+                'gambar' => '/images/istana-tampaksiring-new.jpg',
+                'gambar2' => '/images/tampaksiring-newpict1.jpg',
+                'gambar3' => '/images/istana-tampaksiring-3.jpg',
                 'rating' => 4.4,
                 'fasilitas' => ['Taman', 'Museum', 'Pemandu', 'Area Parkir']
+            ],
+            [
+                'id' => 7,
+                'nama' => 'Air Terjun Tukad Cepung',
+                'deskripsi' => 'Air terjun tersembunyi dengan dinding bebatuan yang megah. Sinar matahari menembus celah bebatuan menciptakan efek cahaya yang dramatis. Tempat favorit untuk berfoto karena keunikan alamnya.',
+                'lokasi' => 'Kecamatan Bangli, Karangasem',
+                'kategori' => 'Air Terjun',
+                'harga' => 'Rp 15.000',
+                'jam_buka' => '08:00 - 17:00',
+                'gambar' => '/images/tukad-cepung-gambar2.jpg',
+                'gambar2' => '/images/tukad-cepung-gambar2.jpg',
+                'gambar3' => '/images/tukad-cepung-gambar2.jpg',
+                'rating' => 4.8,
+                'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Spot Foto']
             ]
         ];
 

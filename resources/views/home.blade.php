@@ -209,6 +209,26 @@
             color: #0d6efd;
         }
         
+        /* Alert styling */
+        .alert-fixed {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
         /* Footer Styles */
         .footer {
             background-color: #1a1a2e;
@@ -233,7 +253,7 @@
         
         .social-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
         }
         
@@ -241,12 +261,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
             text-decoration: none;
         }
@@ -268,10 +288,6 @@
             width: 30px;
             color: #0d6efd;
             font-size: 1.1rem;
-        }
-        
-        .footer-contact-item span {
-            font-size: 0.9rem;
         }
         
         .footer-links {
@@ -302,26 +318,6 @@
             text-align: center;
             font-size: 0.8rem;
             color: #888;
-        }
-        
-        /* Alert styling */
-        .alert-fixed {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 9999;
-            animation: slideIn 0.5s ease;
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
         }
         
         /* Responsive */
@@ -372,11 +368,11 @@
 </head>
 <body>
 
-<!-- Navbar Langsung di HTML (tanpa component) -->
-<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <i class="fas fa-umbrella-beach"></i> Pesona Karangasem
+            <i class="fas fa-umbrella-beach me-2"></i>Pesona Karangasem
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -391,10 +387,9 @@
                 </li>
                 
                 @auth
-                    <!-- Jika sudah login -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
+                            <i class="fas fa-user-circle me-1"></i> {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -419,15 +414,14 @@
                         </ul>
                     </li>
                 @else
-                    <!-- Jika belum login -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">
-                            <i class="fas fa-sign-in-alt"></i> Login
+                            <i class="fas fa-sign-in-alt me-1"></i> Login
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-primary text-white px-3 rounded" href="{{ route('register') }}" style="background: #0d6efd;">
-                            <i class="fas fa-user-plus"></i> Daftar
+                            <i class="fas fa-user-plus me-1"></i> Daftar
                         </a>
                     </li>
                 @endauth
@@ -436,7 +430,7 @@
     </div>
 </nav>
 
-<!-- Alert untuk notifikasi -->
+<!-- Alert Notifikasi -->
 @if(session('success'))
 <div class="alert alert-success alert-fixed alert-dismissible fade show" role="alert">
     <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
@@ -451,7 +445,7 @@
 </div>
 @endif
 
-<!-- Hero Section dengan Gambar -->
+<!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
         <h1>Selamat Datang di Karangasem</h1>
@@ -476,12 +470,7 @@
                         <p class="card-text text-muted">
                             <i class="fas fa-map-marker-alt"></i> {{ $item['lokasi'] }}
                         </p>
-                        <p class="card-text">
-                            @php
-                                $desc = $item['deskripsi'];
-                                echo strlen($desc) > 100 ? substr($desc, 0, 100) . '...' : $desc;
-                            @endphp
-                        </p>
+                        <p class="card-text">{{ Str::limit($item['deskripsi'], 100) }}</p>
                         <a href="/destinasi/{{ $item['id'] }}" class="btn btn-primary">Lihat Detail</a>
                     </div>
                 </div>
@@ -491,12 +480,10 @@
     </div>
 </section>
 
-<!-- Tentang Section dengan Maps di Sebelah Kanan (Titik Pura Besakih) -->
+<!-- Tentang Section -->
 <section id="tentang" class="about-section bg-light">
     <div class="container">
         <div class="row align-items-center">
-            
-            <!-- Kolom Kiri: Tentang Karangasem -->
             <div class="col-lg-6 about-text">
                 <h2>
                     <i class="fas fa-landmark text-primary me-2"></i>
@@ -516,11 +503,13 @@
                 </ul>
             </div>
             
-            <!-- Kolom Kanan: Google Maps dengan titik Pura Besakih -->
             <div class="col-lg-6">
                 <div class="map-container">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31561.000000000004!2d115.4499818!3d-8.3739976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd21cbe3748b2b7%3A0xbfc39798cd1bb4a!2sBesakih%20Great%20Temple!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="350" 
+                        style="border:0; border-radius: 15px;" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
@@ -529,7 +518,6 @@
                     <i class="fas fa-map-marker-alt text-danger"></i> Pura Besakih - Mother Temple of Bali
                 </p>
             </div>
-            
         </div>
     </div>
 </section>
