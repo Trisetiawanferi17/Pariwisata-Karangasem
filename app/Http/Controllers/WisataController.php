@@ -8,7 +8,7 @@ class WisataController extends Controller
 {
     public function index()
     {
-        // Data dummy wisata Karangasem (7 wisata untuk halaman home)
+        // Data dummy wisata Karangasem (8 wisata untuk halaman home)
         $wisata = [
             [
                 'id' => 1,
@@ -93,6 +93,30 @@ class WisataController extends Controller
                 'gambar' => '/images/tukad-cepung-gambar2.jpg',
                 'rating' => 4.8,
                 'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Spot Foto']
+            ],
+            [
+                'id' => 8,
+                'nama' => 'Pantai Virgin Beach',
+                'deskripsi' => 'Pantai pasir putih dengan air laut yang jernih dan tenang. Dikelilingi tebing hijau yang membuat suasana semakin eksotis. Sangat cocok untuk berenang dan bersantai.',
+                'lokasi' => 'Kecamatan Karangasem, Karangasem',
+                'kategori' => 'Pantai',
+                'harga' => 'Rp 15.000',
+                'jam_buka' => '08:00 - 18:00',
+                'gambar' => '/images/virgin-beach-karangasem.jpg',
+                'rating' => 4.8,
+                'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Sewa Kursi']
+            ],
+            [
+                'id' => 9,
+                'nama' => 'Desa Tenganan',
+                'deskripsi' => 'Desa adat Bali Aga yang masih mempertahankan tradisi asli. Terkenal dengan tenunan geringsing dan perayaan Perang Pandan. Arsitektur rumah tradisional masih sangat terjaga.',
+                'lokasi' => 'Kecamatan Manggis, Karangasem',
+                'kategori' => 'Budaya',
+                'harga' => 'Rp 15.000',
+                'jam_buka' => '08:00 - 17:00',
+                'gambar' => '/images/Desa-Adat-Tenganan-selamatdatang.jpg',
+                'rating' => 4.8,
+                'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Sewa Kursi']
             ]
         ];
 
@@ -101,7 +125,7 @@ class WisataController extends Controller
 
     public function detail($id)
     {
-        // Data wisata lengkap untuk halaman detail (7 wisata)
+        // Data wisata lengkap untuk halaman detail (8 wisata)
         $wisata = [
             [
                 'id' => 1,
@@ -200,7 +224,36 @@ class WisataController extends Controller
                 'gambar3' => '/images/tukad-cepung-gambar2.jpg',
                 'rating' => 4.8,
                 'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Spot Foto']
+            ],
+            [
+                'id' => 8,
+                'nama' => 'Pantai Virgin Beach',
+                'deskripsi' => 'Pantai pasir putih dengan air laut yang jernih dan tenang. Dikelilingi tebing hijau yang membuat suasana semakin eksotis. Sangat cocok untuk berenang dan bersantai.',
+                'lokasi' => 'Kecamatan Karangasem, Karangasem',
+                'kategori' => 'Pantai',
+                'harga' => 'Rp 15.000',
+                'jam_buka' => '08:00 - 18:00',
+                'gambar' => '/images/virgin-beach-karangasem.jpg',
+                'gambar2' => '/images/virgin-beach-karangasem.jpg',
+                'gambar3' => '/images/virgin-beach-karangasem.jpg',
+                'rating' => 4.8,
+                'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Sewa Kursi']
+            ],
+            [
+                'id' => 9,
+                'nama' => 'Desa Tenganan',
+                'deskripsi' => 'Desa adat Bali Aga yang masih mempertahankan tradisi asli. Terkenal dengan tenunan geringsing dan perayaan Perang Pandan. Arsitektur rumah tradisional masih sangat terjaga.',
+                'lokasi' => 'Kecamatan Manggis, Karangasem',
+                'kategori' => 'Budaya',
+                'harga' => 'Gratis',
+                'jam_buka' => '08:00 - 17:00',
+                'gambar' => '/images/Desa-Adat-Tenganan-selamatdatang.jpg',
+                'gambar2' => '/images/Desa-tenganan-Perang-Pandang-.jpg',
+                'gambar3' => '/images/Desa-Adat-tenganan-lastpict.jpg',
+                'rating' => 4.7,
+                'fasilitas' => ['Area Parkir', 'Toilet', 'Warung', 'Pemandu']
             ]
+
         ];
 
         // Cari wisata berdasarkan id
