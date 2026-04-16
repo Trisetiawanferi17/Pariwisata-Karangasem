@@ -117,9 +117,21 @@ class WisataController extends Controller
                 'gambar' => '/images/Desa-Adat-Tenganan-selamatdatang.jpg',
                 'rating' => 4.8,
                 'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Sewa Kursi']
-            ]
+            ],
+            [
+                'id' => 10,
+                'nama' => 'Taman Ujung Sukasada',
+                'deskripsi' => 'Istana air peninggalan Kerajaan Karangasem dengan arsitektur Eropa dan Bali. Memiliki kolam besar dan jembatan yang indah. Spot favorit untuk prewedding.',
+                'lokasi' => 'Kecamatan Bebandem, Karangasem',
+                'kategori' => 'Taman Air',
+                'harga' => 'Rp 35.000',
+                'jam_buka' => '08:00 - 19:00',
+                'gambar' => '/images/tamanujung-bali.jpg',
+                'rating' => 4.6,
+                'fasilitas' => ['Kolam', 'Area Foto', 'Toilet', 'Parkir']
+            ],
         ];
-
+        
         return view('home', compact('wisata'));
     }
 
@@ -252,6 +264,20 @@ class WisataController extends Controller
                 'gambar3' => '/images/Desa-Adat-tenganan-lastpict.jpg',
                 'rating' => 4.7,
                 'fasilitas' => ['Area Parkir', 'Toilet', 'Warung', 'Pemandu']
+            ],
+            [
+                'id' => 10,
+                'nama' => 'Taman Ujung Sukasada',
+                'deskripsi' => 'Istana air peninggalan Kerajaan Karangasem dengan arsitektur Eropa dan Bali. Memiliki kolam besar dan jembatan yang indah. Spot favorit untuk prewedding.',
+                'lokasi' => 'Kecamatan Bebandem, Karangasem',
+                'kategori' => 'Taman Air',
+                'harga' => 'Rp 35.000',
+                'jam_buka' => '08:00 - 19:00',
+                'gambar' => '/images/taman-ujung-sukasad1.jpg',
+                'gambar2' => '/images/taman-ujung-sukasada2.jpg',
+                'gambar3' => '/images/taman-ujung-sukasada3.jpg',
+                'rating' => 4.6,
+                'fasilitas' => ['Kolam', 'Area Foto', 'Toilet', 'Parkir']
             ]
 
         ];
