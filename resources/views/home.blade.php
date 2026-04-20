@@ -531,9 +531,17 @@
                 <hr>
                 <p>Menjelajahi keindahan alam dan budaya Karangasem, Bali Timur.</p>
                 <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <!-- GANTI LINK FACEBOOK DI SINI -->
+                    <!-- Masukkan URL halaman Facebook Anda pada href di bawah -->
+                    <a href="https://www.facebook.com/share/1CrMC2mAuz/?mibextid=wwXIfr" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/pesonakarangasem" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@pesonakarangasem" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
