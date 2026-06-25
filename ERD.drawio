@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-11-01T00:00:00.000Z" agent="BLACKBOXAI" version="24.7.8">
+  <diagram name="Pariwisata-Karangasem ERD" id="erd">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Users Entity -->
+        <mxCell id="users-entity" value="&#xa0;&#xa0;&#xa0;&#xa0;users&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;horizontal=0;resizeParent=0;resizeParentMax=0;resizeLast=0;connectable=0;moveCells=false;backgroundOutline=1;whiteSpace=wrap;pointStrokeWidth=1;fontSize=12;align=center;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="220" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="users-pk" value="PK < id" style="text;strokeColor=#000000;verticalAlign=top;align=left;spacingLeft=4;overflow=hidden;points=[[0,0.5],[1,0.5]];pointStrokeWidth=1;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="25" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="users-name" value="name" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="60" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-email" value="email (unique)" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="90" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-phone" value="phone" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="120" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-address" value="address" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="150" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-avatar" value="avatar" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="180" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-password" value="password" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="210" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-email_verified_at" value="email_verified_at" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="240" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="users-remember_token" value="remember_token" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="users-entity">
+          <mxGeometry y="270" width="200" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- Sessions Entity -->
+        <mxCell id="sessions-entity" value="&#xa0;&#xa0;sessions&#xa0;&#xa0;&#xa0;" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;horizontal=0;resizeParent=0;resizeParentMax=0;resizeLast=0;connectable=0;moveCells=false;backgroundOutline=1;whiteSpace=wrap;pointStrokeWidth=1;fontSize=12;align=center;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="220" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-pk" value="PK < id" style="text;strokeColor=#000000;verticalAlign=top;align=left;spacingLeft=4;overflow=hidden;points=[[0,0.5],[1,0.5]];pointStrokeWidth=1;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="25" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-fk" value="FK > user_id" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="60" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-ip_address" value="ip_address" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="95" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-user_agent" value="user_agent" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="125" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-payload" value="payload" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="155" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-last_activity" value="last_activity" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="185" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions-created_at" value="created_at, updated_at" style="text;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;fontSize=11;html=1;" vertex="1" parent="sessions-entity">
+          <mxGeometry y="215" width="200" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- Relationship -->
+        <mxCell id="relation-line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=ERoneToMany;endFill=1;strokeWidth=2;" edge="1" parent="1" source="users-entity" target="sessions-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Note: Proposed Wisata (not implemented) -->
+        <mxCell id="note" value="Note: Wisata data is hardcoded in controller.&#xa;Consider adding Wisata model/table:&#xa;- id (PK)&#xa;- nama&#xa;- deskripsi&#xa;- lokasi&#xa;- kategori&#xa;- harga&#xa;- rating&#xa;- gambar&#xa;- created_at, updated_at&#xa;&#xa;User 1:N Wisata (favorites/bookings)" style="text;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="450" width="500" height="120" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

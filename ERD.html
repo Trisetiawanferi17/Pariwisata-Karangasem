@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pariwisata Karangasem ERD</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({startOnLoad:true, theme: 'default'});
+    </script>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .container { max-width: 1200px; margin: auto; }
+        h1 { text-align: center; color: #333; }
+        pre { background: #f4f4f4; padding: 20px; border-radius: 8px; overflow: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ERD - Pariwisata Karangasem (Current Schema)</h1>
+        <pre class="mermaid">
+erDiagram
+    USERS {
+        int id PK "Primary Key"
+        string name
+        string email UK "Unique"
+        string phone
+        text address
+        string avatar
+        string password "hashed"
+        timestamp email_verified_at
+        string remember_token
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    SESSIONS {
+        string id PK
+        int user_id FK "nullable"
+        string ip_address
+        text user_agent
+        longtext payload
+        int last_activity
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    PASSWORD_RESET_TOKENS {
+        string email PK
+        string token
+        timestamp created_at
+    }
+    
+    %% Relationships
+    USERS ||--o{ SESSIONS : "has_many (1:N)"
+    
+    %% Proposed for tourism features
+    %% WISATA {
+    %%     int id PK
+    %%     string nama
+    %%     text deskripsi
+    %%     string lokasi
+    %%     string kategori
+    %%     string harga
+    %%     float rating
+    %%     string gambar
+    %%     json fasilitas
+    %%     timestamp created_at
+    %% }
+    
+    NOTE: Current: User auth only. Wisata hardcoded in controller.
+        </pre>
+        
+        <h3>Instructions:</h3>
+        <ul>
+            <li><strong>Live edit:</strong> Copy code block → <a href="https://mermaid.live/edit" target="_blank">mermaid.live/edit</a></li>
+            <li><strong>Draw.io:</strong> Screenshot/export from here → import to draw.io</li>
+            <li><strong>VSCode:</strong> Mermaid extension for ERD.mmd</li>
+        </ul>
+        
+        <details>
+            <summary>Full Mermaid code (copy for mermaid.live)</summary>
+            <pre id="code">erDiagram
+    USERS {
+        int id PK
+        string name
+        string email UK
+        string phone
+        text address
+        string avatar
+        string password
+        timestamp email_verified_at
+        string remember_token
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    SESSIONS {
+        string id PK
+        int user_id FK
+        string ip_address
+        text user_agent
+        longtext payload
+        int last_activity
+    }
+    
+    USERS ||--o{ SESSIONS : has
+    
+    NOTE: "Schema from migrations/User.php. No Wisata table."</pre>
+        </details>
+    </div>
+</body>
+</html>

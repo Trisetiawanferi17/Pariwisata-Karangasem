@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesona Karangasem - Bali</title>
+    <title>Pesona Karangasem</title>
+    <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Hero Section dengan Gambar */
         .hero {
             background-image: url('/images/karangasem-background.jpg');
             background-size: cover;
@@ -26,8 +21,6 @@
             color: white;
             position: relative;
         }
-        
-        /* Lapisan gelap di atas gambar */
         .hero::before {
             content: '';
             position: absolute;
@@ -37,574 +30,377 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
         }
-        
-        /* Konten di atas lapisan gelap */
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 20px;
+            z-index: 1;
         }
-        
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero p {
-            font-size: 1.8rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        
-        .btn-custom {
-            background-color: white;
-            color: #333;
-            padding: 15px 50px;
-            font-size: 1.3rem;
-            text-decoration: none;
-            border-radius: 50px;
-            display: inline-block;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid white;
-        }
-        
-        .btn-custom:hover {
-            background-color: transparent;
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        .btn-custom i {
-            margin-right: 10px;
-        }
-        
-        /* Navbar - AWALNYA TRANSPARAN */
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: transparent !important;
-            padding: 20px 0;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
-        
-        /* Navbar saat di-scroll - MENJADI SOLID BIRU */
         .navbar.scrolled {
             background-color: #0d6efd !important;
-            padding: 10px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white !important;
+        .wisata-card {
+            transition: transform 0.3s;
         }
-        
-        .nav-link {
-            color: white !important;
-            font-size: 1.1rem;
-            margin: 0 10px;
-            transition: all 0.3s;
+        .wisata-card:hover {
+            transform: scale(1.05);
         }
-        
-        .nav-link:hover {
-            opacity: 0.8;
-        }
-        
-        /* Dropdown menu styling */
-        .dropdown-menu {
-            background-color: #0d6efd;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .dropdown-item {
-            color: white;
-        }
-        
-        .dropdown-item:hover {
-            background-color: #0b5ed7;
-            color: white;
-        }
-        
-        .dropdown-item form button {
-            color: white;
-        }
-        
-        /* Card styling */
-        .card-img-top {
+        .wisata-img {
             height: 200px;
             object-fit: cover;
         }
-        
-        /* Map container styling */
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 100%;
-            min-height: 350px;
+        .alert-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
         }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 350px;
-            border: 0;
+        /* ===== FOOTER STYLING ===== */
+        footer {
+            background-color: #0a0a0a !important;
         }
-        
-        /* Section tentang */
-        .about-section {
-            padding: 80px 0;
+        footer,
+        footer p,
+        footer h5,
+        footer h6,
+        footer li,
+        footer a,
+        footer span,
+        footer small,
+        footer .text-muted {
+            color: #ffffff !important;
         }
-        
-        .about-text {
-            padding-right: 30px;
+        footer a {
+            text-decoration: none;
+            transition: color 0.3s;
         }
-        
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
+        footer a:hover {
+            color: #0d6efd !important;
+            text-decoration: underline;
         }
-        
-        .about-text .lead {
-            font-size: 1.2rem;
-            color: #0d6efd;
-            margin-bottom: 20px;
+        footer hr {
+            background-color: rgba(255,255,255,0.15) !important;
         }
-        
-        .about-text p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        
-        .destinasi-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-        
-        .destinasi-list li {
-            display: inline-block;
-            background: #e9ecef;
-            padding: 8px 15px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #0d6efd;
-        }
-        
-        .destinasi-list li i {
-            margin-right: 5px;
-            color: #0d6efd;
-        }
-        
-        /* Footer Styles */
-        .footer {
-            background-color: #1a1a2e;
-            color: #eee;
-            padding: 60px 0 30px;
-        }
-        
-        .footer h5 {
-            color: #fff;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .footer hr {
-            background-color: #0d6efd;
-            width: 50px;
-            height: 2px;
-            margin: 0 0 20px 0;
-            opacity: 1;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .social-icon {
+        .footer-social a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255,255,255,0.1);
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            color: white;
-            font-size: 1.3rem;
+            background-color: rgba(255,255,255,0.08);
             transition: all 0.3s;
-            text-decoration: none;
+            color: #ffffff !important;
         }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
+        .footer-social a:hover {
             background-color: #0d6efd;
+            transform: translateY(-3px);
+            text-decoration: none !important;
         }
-        
-        .footer-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            color: #ccc;
+        .footer-map iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.1);
+            /* ===== INI YANG MEMBUAT MAP BISA DIGESER ===== */
+            pointer-events: auto !important;
         }
-        
-        .footer-contact-item i {
-            width: 30px;
+        .footer-link {
+            color: #ffffff !important;
+        }
+        .footer-link:hover {
+            color: #0d6efd !important;
+        }
+        .footer-list li {
+            margin-bottom: 8px;
+        }
+        .footer-list li i {
             color: #0d6efd;
-            font-size: 1.1rem;
+            margin-right: 8px;
+            font-size: 10px;
         }
-        
-        .footer-contact-item span {
-            font-size: 0.9rem;
+        /* ===== PERBAIKAN: MAP BISA DIGESER ===== */
+        .footer-map {
+            position: relative;
         }
-        
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        
-        .footer-links a:hover {
-            color: #0d6efd;
-            padding-left: 5px;
-        }
-        
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
-        }
-        
-        /* Alert styling */
-        .alert-fixed {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 9999;
-            animation: slideIn 0.5s ease;
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .btn-custom {
-                padding: 12px 30px;
-                font-size: 1.1rem;
-            }
-            
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-            
-            .about-text {
-                padding-right: 0;
-                margin-bottom: 30px;
-            }
-            
-            .about-section {
-                padding: 50px 0;
-            }
-            
-            .about-text h2 {
-                font-size: 1.8rem;
-            }
-            
-            .map-container {
-                min-height: 300px;
-            }
-            
-            .footer {
-                text-align: center;
-            }
-            
-            .footer hr {
-                margin: 0 auto 20px auto;
-            }
+        .footer-map iframe {
+            pointer-events: auto !important;
         }
     </style>
 </head>
 <body>
 
-<!-- Navbar Langsung di HTML (tanpa component) -->
-<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
-    <div class="container">
-        <a class="navbar-brand" href="/">
-            <i class="fas fa-umbrella-beach"></i> Pesona Karangasem
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#destinasi">Destinasi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tentang">Tentang</a>
-                </li>
-                
-                @auth
-                    <!-- Jika sudah login -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user me-2"></i> Profil Saya
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-history me-2"></i> Riwayat Kunjungan
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item" style="border: none; background: none; width: 100%; text-align: left;">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @else
-                    <!-- Jika belum login -->
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show alert-fixed" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Pesona Karangasem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">
-                            <i class="fas fa-sign-in-alt"></i> Login
-                        </a>
+                        <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white px-3 rounded" href="{{ route('register') }}" style="background: #0d6efd;">
-                            <i class="fas fa-user-plus"></i> Daftar
-                        </a>
+                        <a class="nav-link" href="#destinasi">Destinasi</a>
                     </li>
-                @endauth
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Alert untuk notifikasi -->
-@if(session('success'))
-<div class="alert alert-success alert-fixed alert-dismissible fade show" role="alert">
-    <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-</div>
-@endif
-
-@if(session('error'))
-<div class="alert alert-danger alert-fixed alert-dismissible fade show" role="alert">
-    <i class="fas fa-exclamation-circle me-2"></i> {{ session('error') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-</div>
-@endif
-
-<!-- Hero Section dengan Gambar -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Selamat Datang di Karangasem</h1>
-        <p>Jelajahi keindahan alam dan budaya Bali bagian timur</p>
-        <a href="#destinasi" class="btn-custom">
-            <i class="fas fa-arrow-down"></i> Lihat Destinasi
-        </a>
-    </div>
-</section>
-
-<!-- Destinasi Section -->
-<section id="destinasi" class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Destinasi Wisata Populer</h2>
-        <div class="row">
-            @foreach($wisata as $item)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow">
-                    <img src="{{ $item['gambar'] }}" class="card-img-top" alt="{{ $item['nama'] }}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $item['nama'] }}</h5>
-                        <p class="card-text text-muted">
-                            <i class="fas fa-map-marker-alt"></i> {{ $item['lokasi'] }}
-                        </p>
-                        <p class="card-text">
-                            @php
-                                $desc = $item['deskripsi'];
-                                echo strlen($desc) > 100 ? substr($desc, 0, 100) . '...' : $desc;
-                            @endphp
-                        </p>
-                        <a href="/destinasi/{{ $item['id'] }}" class="btn btn-primary">Lihat Detail</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-<!-- Tentang Section dengan Maps di Sebelah Kanan (Titik Pura Besakih) -->
-<section id="tentang" class="about-section bg-light">
-    <div class="container">
-        <div class="row align-items-center">
-            
-            <!-- Kolom Kiri: Tentang Karangasem -->
-            <div class="col-lg-6 about-text">
-                <h2>
-                    <i class="fas fa-landmark text-primary me-2"></i>
-                    Tentang Karangasem
-                </h2>
-                <p class="lead">Kabupaten Karangasem adalah salah satu kabupaten di provinsi Bali, Indonesia yang menyimpan pesona alam dan budaya yang luar biasa.</p>
-                <p>Dengan luas wilayah 839,54 km², Karangasem memiliki berbagai destinasi wisata menarik seperti pura-pura bersejarah, pantai eksotis, bukit dengan pemandangan menakjubkan, dan taman air yang indah.</p>
-                <p>Karangasem dikenal sebagai kawasan dengan kekayaan budaya yang masih terjaga, mulai dari upacara adat hingga peninggalan kerajaan. Destinasi wisata unggulannya menjadi daya tarik utama bagi wisatawan domestik maupun mancanegara.</p>
-                
-                <ul class="destinasi-list">
-                    <li><i class="fas fa-temple"></i> Pura Besakih</li>
-                    <li><i class="fas fa-water"></i> Tirta Gangga</li>
-                    <li><i class="fas fa-umbrella-beach"></i> Pantai Amed</li>
-                    <li><i class="fas fa-mountain"></i> Bukit Asah</li>
-                    <li><i class="fas fa-temple"></i> Lempuyang Temple</li>
-                    <li><i class="fas fa-landmark"></i> Istana Tampaksiring</li>
-                </ul>
-            </div>
-            
-            <!-- Kolom Kanan: Google Maps dengan titik Pura Besakih -->
-            <div class="col-lg-6">
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31561.000000000004!2d115.4499818!3d-8.3739976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd21cbe3748b2b7%3A0xbfc39798cd1bb4a!2sBesakih%20Great%20Temple!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <p class="text-muted mt-2 text-center">
-                    <i class="fas fa-map-marker-alt text-danger"></i> Pura Besakih - Mother Temple of Bali
-                </p>
-            </div>
-            
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <h5>Pesona Karangasem</h5>
-                <hr>
-                <p>Menjelajahi keindahan alam dan budaya Karangasem, Bali Timur.</p>
-                <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5>Link Cepat</h5>
-                <hr>
-                <ul class="footer-links">
-                    <li><a href="#destinasi">Destinasi Wisata</a></li>
-                    <li><a href="#tentang">Tentang Karangasem</a></li>
                     @auth
-                        <li><a href="#">Profil Saya</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-outline-light text-white px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                     @else
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Daftar</a></li>
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="btn btn-outline-light px-3">Login</a>
+                        </li>
                     @endauth
                 </ul>
             </div>
-            <div class="col-md-4 mb-4">
-                <h5>Kontak</h5>
-                <hr>
-                <div class="footer-contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Karangasem, Bali, Indonesia</span>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="display-3 fw-bold">Pesona Karangasem</h1>
+            <p class="lead">Temukan Keindahan Surga Tersembunyi di Bali Timur</p>
+            <a href="#destinasi" class="btn btn-primary btn-lg">Jelajahi Sekarang</a>
+        </div>
+    </header>
+
+    <section id="destinasi" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Destinasi Wisata Populer</h2>
+            <div class="row g-4">
+                @foreach ($wisata as $w)
+                <div class="col-md-4">
+                    <div class="card h-100 wisata-card shadow-sm">
+                        <img src="{{ $w['gambar'] }}" class="card-img-top wisata-img" alt="{{ $w['nama'] }}">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{ $w['nama'] }}</h5>
+                            <p class="text-muted mb-2"><i class="fas fa-map-marker-alt text-danger"></i> {{ $w['lokasi'] }}</p>
+                            <p class="card-text text-secondary">{{ Str::limit($w['deskripsi'], 100) }}</p>
+                            <div class="mt-auto pt-3">
+                                <a href="{{ route('detail', $w['id']) }}" class="btn btn-primary w-100">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>info@pesonakarangasem.com</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+62 123 4567 890</span>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FITUR KOMENTAR ================= -->
+    <section class="py-5 bg-light border-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-primary text-white py-3">
+                            <h5 class="mb-0 fw-bold"><i class="fas fa-comments me-2"></i>Komentar Pengunjung</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            
+                            @auth
+                                <form action="{{ route('komentar.store') }}" method="POST" class="mb-4">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="wisata_id" class="form-label fw-bold text-secondary">Pilih Tempat Wisata:</label>
+                                        <select name="wisata_id" id="wisata_id" class="form-select" required>
+                                            <option value="" disabled selected>-- Pilih Wisata --</option>
+                                            @foreach($wisata as $w)
+                                                <option value="{{ $w['id'] }}">{{ $w['nama'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="content" class="form-label fw-bold text-secondary">Tulis Komentar Anda:</label>
+                                        <textarea name="content" id="content" rows="3" class="form-control" placeholder="Berikan ulasan atau pengalaman Anda..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-1"></i> Kirim Komentar</button>
+                                </form>
+                            @else
+                                <div class="alert alert-warning text-center py-3 rounded-3">
+                                    <p class="mb-2 fw-semibold">Anda harus login terlebih dahulu untuk menambahkan komentar.</p>
+                                    <a href="{{ route('login') }}" class="btn btn-sm btn-primary px-3 fw-bold">Login Sekarang</a>
+                                    <span class="mx-2 text-muted">atau</span>
+                                    <a href="{{ route('register') }}" class="btn btn-sm btn-outline-primary px-3 fw-bold">Daftar Akun</a>
+                                </div>
+                            @endauth
+
+                            <hr class="my-4">
+
+                            <h6 class="fw-bold text-dark mb-3">Semua Komentar ({{ $comments->count() }})</h6>
+                            
+                            @if($comments->isEmpty())
+                                <p class="text-muted text-center py-3">Belum ada komentar. Yuk, jadi yang pertama memberikan komentar!</p>
+                            @else
+                                <div class="comment-list" style="max-height: 400px; overflow-y: auto;">
+                                    @foreach($comments as $comment)
+                                        @php
+                                            $namaWisata = 'Destinasi';
+                                            foreach($wisata as $w) {
+                                                if($w['id'] == $comment->wisata_id) {
+                                                    $namaWisata = $w['nama'];
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <div class="p-3 mb-2 bg-white border rounded shadow-xs">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <strong class="text-primary">{{ $comment->user->name }}</strong>
+                                                    <span class="badge bg-secondary ms-2" style="font-size: 0.7rem;">{{ $namaWisata }}</span>
+                                                </div>
+                                                <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                            </div>
+                                            <p class="mb-0 mt-2 text-dark" style="white-space: pre-line;">{{ $comment->content }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <small>&copy; 2024 Pesona Karangasem. All rights reserved.</small>
-        </div>
-    </div>
-</footer>
+    </section>
+    <!-- ================= END FITUR KOMENTAR ================= -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        var navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
-    // Auto close alert after 3 seconds
-    setTimeout(function() {
-        var alerts = document.querySelectorAll('.alert-fixed');
-        alerts.forEach(function(alert) {
-            var bsAlert = new bootstrap.Alert(alert);
-            bsAlert.close();
+    <!-- ================= FOOTER PERSIS SEPERTI GAMBAR (MAPS BISA DIGESER) ================= -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            
+            <!-- BARIS PERTAMA: Tentang Karangasem (Kiri) + Google Maps (Kanan) -->
+            <div class="row g-4 mb-4">
+                <!-- Kolom Kiri: Tentang Karangasem -->
+                <div class="col-lg-8">
+                    <h5 class="fw-bold mb-3" style="font-size: 1.1rem;">Tentang Karangasem</h5>
+                    <p style="text-align: justify; line-height: 1.7; font-size: 0.95rem;">
+                        Kabupaten Karangasem adalah salah satu kabupaten di provinsi Bali, Indonesia yang menyimpan pesona alam dan budaya yang luar biasa.
+                        <br><br>
+                        Dengan luas wilayah 839,54 km², Karangasem memiliki berbagai destinasi wisata menarik seperti pura-pura berjejari, pantai eksotis, bukit dengan pemandangan menakjubkan, dan taman air yang indah.
+                        <br><br>
+                        Karangasem dikenal sebagai kawasan dengan kekayaan budaya yang masih terjaga, mulai dari upacara adat hingga peninggalan kerajaan. Destinasi wisata unggulannya menjadi daya tarik utama bagi wisatawan domestik maupun mancanegara.
+                    </p>
+                </div>
+
+                <!-- Kolom Kanan: Google Maps (BISA DIGESER & DI-ZOOM) -->
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3" style="font-size: 1.1rem;">Lokasi Karangasem</h5>
+                    <div class="footer-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126248.47195449914!2d115.4377885!3d-8.3752541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ded459c0f994781%3A0x3030bfbcaf70170!2sKarangasem%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1690000000000!5m2!1sen!2sid" 
+                            width="100%" 
+                            height="200" 
+                            style="border:2px solid rgba(255,255,255,0.1); border-radius:8px; pointer-events: auto !important;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- BARIS KEDUA: 4 Kolom (Pesona Karangasem, Link Cepat, Kontak, Destinasi Populer) -->
+            <div class="row g-4 pt-3">
+                
+                <!-- Kolom 1: Pesona Karangasem -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3" style="font-size: 1rem;">Pesona Karangasem</h5>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        Menjelajahi keindahan alam dan budaya Karangasem, Bali Timur.
+                    </p>
+                    <div class="footer-social d-flex gap-2">
+                        <a href="#" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Kolom 2: Link Cepat -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3" style="font-size: 1rem;">Link Cepat</h5>
+                    <ul class="list-unstyled footer-list" style="font-size: 0.9rem;">
+                        <li><i class="fas fa-chevron-right"></i><a href="#" class="footer-link">Destinasi Wisata</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#" class="footer-link">Tentang Karangasem</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="{{ route('login') }}" class="footer-link">Login</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="{{ route('register') }}" class="footer-link">Daftar</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Kontak -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3" style="font-size: 1rem;">Kontak</h5>
+                    <ul class="list-unstyled" style="font-size: 0.9rem; line-height: 1.8;">
+                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> Karangasem, Bali, Indonesia</li>
+                        <li><i class="fas fa-envelope text-primary me-2"></i> info@pesonakarangasem.com</li>
+                        <li><i class="fas fa-phone text-primary me-2"></i> +62 123 4567 890</li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 4: Destinasi Populer -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3" style="font-size: 1rem;">Destinasi Populer</h5>
+                    <ul class="list-unstyled footer-list" style="font-size: 0.9rem;">
+                        <li><i class="fas fa-chevron-right"></i>Pura Besakih</li>
+                        <li><i class="fas fa-chevron-right"></i>Tirta Gangga</li>
+                        <li><i class="fas fa-chevron-right"></i>Pantai Amed</li>
+                        <li><i class="fas fa-chevron-right"></i>Bukit Asah</li>
+                        <li><i class="fas fa-chevron-right"></i>Lempuyang Temple</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <hr class="my-4">
+            <div class="text-center small" style="font-size: 0.85rem;">
+                &copy; 2024 Pesona Karangasem. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+    <!-- ================= END FOOTER ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
-    }, 3000);
-</script>
+
+        setTimeout(function() {
+            var alerts = document.querySelectorAll('.alert-fixed');
+            alerts.forEach(function(alert) {
+                var bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 3000);
+    </script>
 </body>
 </html>

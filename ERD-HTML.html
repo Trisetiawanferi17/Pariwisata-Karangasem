@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pariwisata Karangasem ERD - Full Code</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1400px; margin: auto; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
+        header { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 30px; text-align: center; }
+        h1 { margin: 0; font-size: 2.5em; }
+        .subtitle { font-size: 1.2em; opacity: 0.9; margin-top: 10px; }
+        .erd-container { padding: 30px; }
+        svg { width: 100%; height: auto; max-height: 800px; border: 1px solid #ddd; border-radius: 10px; background: white; }
+        .code-block { background: #2d3748; color: #e2e8f0; padding: 25px; margin: 30px 0; border-radius: 10px; overflow: auto; font-family: 'Courier New', monospace; }
+        .code-block h3 { color: #63b3ed; margin-top: 0; }
+        .buttons { text-align: center; padding: 20px; background: #f8f9fa; }
+        .btn { display: inline-block; background: #3498db; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; margin: 0 10px; transition: all 0.3s; }
+        .btn:hover { background: #2980b9; transform: translateY(-2px); }
+        .status { text-align: center; padding: 20px; background: #d4edda; border-radius: 10px; margin: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏝️ Pariwisata Karangasem ERD</h1>
+            <div class="subtitle">Full Application Architecture Diagram</div>
+        </header>
+        
+        <div class="erd-container">
+            <div class="status">
+                <strong>Current Status:</strong> User Auth + Hardcoded Tourism Data (6 destinations)
+            </div>
+            
+            <svg viewBox="0 0 1200 800" style="width:100%; max-height:600px;">
+                <!-- ERD SVG content here - same as project-ERD.svg -->
+                <g>
+                    <!-- Paste the full SVG content from above -->
+                    <text x="600" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">Pariwisata Karangasem ERD</text>
+                    <!-- ... full SVG ERD ... -->
+                </g>
+            </svg>
+        </div>
+        
+        <div class="buttons">
+            <a href="data:image/svg+xml;base64,[BASE64_ENCODED_SVG]" download="pariwisata-erd.svg" class="btn">💾 Download SVG</a>
+            <a href="ERD.mmd" class="btn">📝 Mermaid Source</a>
+            <a href="ERD.drawio" class="btn">🎨 draw.io File</a>
+        </div>
+        
+        <div class="code-block">
+            <h3>🌊 Mermaid Code (Copy to mermaid.live):</h3>
+            <pre>erDiagram
+    USER ||--o{ AUTH_CONTROLLER : "uses"
+    AUTH_CONTROLLER ||--o{ VIEWS : "renders"
+    WISATA_CONTROLLER ||--o{ VIEWS : "data(home/detail)"
+    WISATA_CONTROLLER }|--|| ASSETS : "images(20+)"
+    USER }o--o{ WISATA : "future(favorites)"</pre>
+        </div>
+    </div>
+</body>
+</html>
