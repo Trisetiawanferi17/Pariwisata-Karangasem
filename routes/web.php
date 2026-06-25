@@ -8,6 +8,9 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [WisataController::class, 'index'])->name('home');
 Route::get('/destinasi/{id}', [WisataController::class, 'detail'])->name('detail');
 
+// Rute Tambahan: Menyimpan komentar baru dari Halaman Utama (Wajib Login)
+Route::post('/kirim-komentar', [WisataController::class, 'storeKomentar'])->middleware('auth')->name('komentar.store');
+
 // Auth Routes (Login, Register, Logout)
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

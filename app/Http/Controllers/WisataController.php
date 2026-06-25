@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class WisataController extends Controller
 {
     public function index()
     {
-        // Data dummy wisata Karangasem (8 wisata untuk halaman home)
         $wisata = [
             [
                 'id' => 1,
                 'nama' => 'Pura Besakih',
-                'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali".',
+                'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali" Kompleks pura ini terdiri dari 22 pura yang tersebar di area seluas 3 hektar. Pura utama yang paling disucikan adalah Pura Penataran Agung..',
                 'lokasi' => 'Kecamatan Rendang, Karangasem',
                 'kategori' => 'Pura',
                 'harga' => 'Rp 25.000',
                 'jam_buka' => '08:00 - 18:00',
-                'gambar' => '/images/pura-besakih.jpg',
+                'gambar' => '/images/Pura-besakih-gambar1.jpg',
                 'rating' => 4.9,
                 'fasilitas' => ['Parkir Luas', 'Toilet', 'Warung Makan', 'Pemandu Wisata']
             ],
@@ -42,7 +42,7 @@ class WisataController extends Controller
                 'kategori' => 'Pantai',
                 'harga' => 'Rp 10.000',
                 'jam_buka' => '24 Jam',
-                'gambar' => '/images/pantai-amed.jpg',
+                'gambar' => '/images/amed-sunset-point.jpg',
                 'rating' => 4.6,
                 'fasilitas' => ['Snorkeling', 'Diving', 'Penginapan', 'Warung Makan']
             ],
@@ -54,7 +54,7 @@ class WisataController extends Controller
                 'kategori' => 'Bukit',
                 'harga' => 'Rp 15.000',
                 'jam_buka' => '06:00 - 20:00',
-                'gambar' => '/images/bukit-asah-sunset-Ai.png',
+                'gambar' => '/images/asah-hill.jpg',
                 'rating' => 4.5,
                 'fasilitas' => ['Area Camping', 'Toilet', 'Warung', 'Spot Sunrise']
             ],
@@ -90,14 +90,14 @@ class WisataController extends Controller
                 'kategori' => 'Air Terjun',
                 'harga' => 'Rp 15.000',
                 'jam_buka' => '08:00 - 17:00',
-                'gambar' => '/images/tukad-cepung-gambar2.jpg',
+                'gambar' => '/images/tukad_cepung_bali17.jpg',
                 'rating' => 4.8,
                 'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Spot Foto']
             ],
             [
                 'id' => 8,
                 'nama' => 'Pantai Virgin Beach',
-                'deskripsi' => 'Pantai pasir putih dengan air laut yang jernih dan tenang. Dikelilingi tebing hijau yang membuat suasana semakin eksotis. Sangat cocok untuk berenang dan bersantai.',
+                'deskripsi' => 'Pantai pasir putih dengan air laut yang jernih dan tenang. Dikelilingi tebing hijau yang membuat suasana semakin eksotis.',
                 'lokasi' => 'Kecamatan Karangasem, Karangasem',
                 'kategori' => 'Pantai',
                 'harga' => 'Rp 15.000',
@@ -109,7 +109,7 @@ class WisataController extends Controller
             [
                 'id' => 9,
                 'nama' => 'Desa Tenganan',
-                'deskripsi' => 'Desa adat Bali Aga yang masih mempertahankan tradisi asli. Terkenal dengan tenunan geringsing dan perayaan Perang Pandan. Arsitektur rumah tradisional masih sangat terjaga.',
+                'deskripsi' => 'Desa adat Bali Aga yang masih mempertahankan tradisi asli. Terkenal dengan tenunan geringsing.',
                 'lokasi' => 'Kecamatan Manggis, Karangasem',
                 'kategori' => 'Budaya',
                 'harga' => 'Rp 15.000',
@@ -121,7 +121,7 @@ class WisataController extends Controller
             [
                 'id' => 10,
                 'nama' => 'Taman Ujung Sukasada',
-                'deskripsi' => 'Istana air peninggalan Kerajaan Karangasem dengan arsitektur Eropa dan Bali. Memiliki kolam besar dan jembatan yang indah. Spot favorit untuk prewedding.',
+                'deskripsi' => 'Istana air peninggalan Kerajaan Karangasem dengan arsitektur Eropa dan Bali.',
                 'lokasi' => 'Kecamatan Bebandem, Karangasem',
                 'kategori' => 'Taman Air',
                 'harga' => 'Rp 35.000',
@@ -131,24 +131,25 @@ class WisataController extends Controller
                 'fasilitas' => ['Kolam', 'Area Foto', 'Toilet', 'Parkir']
             ],
         ];
-        
-        return view('home', compact('wisata'));
+
+        $comments = Comment::with('user')->latest()->get();
+
+        return view('home', compact('wisata', 'comments'));
     }
 
     public function detail($id)
     {
-        // Data wisata lengkap untuk halaman detail (8 wisata)
         $wisata = [
             [
                 'id' => 1,
                 'nama' => 'Pura Besakih',
-                'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali". Kompleks pura ini terdiri dari 22 pura yang tersebar di area seluas 3 hektar. Pura utama yang paling disucikan adalah Pura Penataran Agung.',
+                'deskripsi' => 'Pura terbesar dan tersuci di Bali, terletak di lereng Gunung Agung. Dikenal sebagai "Mother Temple of Bali" Kompleks pura ini terdiri dari 22 pura yang tersebar di area seluas 3 hektar. Pura utama yang paling disucikan adalah Pura Penataran Agung.',
                 'lokasi' => 'Kecamatan Rendang, Karangasem',
                 'kategori' => 'Pura',
                 'harga' => 'Rp 25.000',
                 'jam_buka' => '08:00 - 18:00',
-                'gambar' => '/images/Pura-besakih-gambar1.jpg',
-                'gambar2' => '/images/pura-besakih-gambar4.jpg',
+                'gambar' => '/images/pura-besakih.jpg',
+                'gambar2' => '/images/pura-besakih-gambar2.jpg',
                 'gambar3' => '/images/pura-besakih-gambar3.jpg',
                 'rating' => 4.9,
                 'fasilitas' => ['Parkir Luas', 'Toilet', 'Warung Makan', 'Pemandu Wisata']
@@ -170,14 +171,14 @@ class WisataController extends Controller
             [
                 'id' => 3,
                 'nama' => 'Pantai Amed',
-                'deskripsi' => 'Pantai dengan pemandangan indah dan spot snorkeling terbaik. Memiliki hamparan pasir hitam dan pemandangan Gunung Agung di kejauhan. Surga bagi penyelam dengan keindahan terumbu karang dan kapal karam.',
+                'deskripsi' => 'Pantai dengan pemandangan indah dan spot snorkeling terbaik.',
                 'lokasi' => 'Kecamatan Abang, Karangasem',
                 'kategori' => 'Pantai',
                 'harga' => 'Rp 10.000',
                 'jam_buka' => '24 Jam',
                 'gambar' => '/images/pantai-amed-Snorkeling.jpg',
-                'gambar2' => '/images/amed-sunset-point.jpg',
-                'gambar3' => '/images/pantai-amed.jpg',
+                'gambar2' => '/images/pantai-amed.jpg',
+                'gambar3' => '/images/BlooLagoonBeach1.jpg',
                 'rating' => 4.6,
                 'fasilitas' => ['Snorkeling', 'Diving', 'Penginapan', 'Warung Makan']
             ],
@@ -189,9 +190,9 @@ class WisataController extends Controller
                 'kategori' => 'Bukit',
                 'harga' => 'Rp 15.000',
                 'jam_buka' => '06:00 - 20:00',
-                'gambar' => '/images/bukit-asah-sunset-Ai.png',
-                'gambar2' => '/images/asah-hill.jpg',
-                'gambar3' => '/images/bukit-asah-camping-area-Ai.png',
+                'gambar' => '/images/treebukitasah.jpg',
+                'gambar2' => '/images/bukitasahcampingarea.jpg',
+                'gambar3' => '/images/asah-hill.jpg',
                 'rating' => 4.5,
                 'fasilitas' => ['Area Camping', 'Toilet', 'Warung', 'Spot Sunrise']
             ],
@@ -217,9 +218,9 @@ class WisataController extends Controller
                 'kategori' => 'Sejarah',
                 'harga' => 'Gratis',
                 'jam_buka' => '08:00 - 16:00',
-                'gambar' => '/images/istana-tampaksiring-new.jpg',
-                'gambar2' => '/images/tampaksiring-newpict1.jpg',
-                'gambar3' => '/images/istana-tampaksiring-3.jpg',
+                'gambar' => '/images/tampaksiring-newpict1.jpg',
+                'gambar2' => '/images/istana-tampak siring.jpg',
+                'gambar3' => '/images/istana-tampaksiring-new.jpg',
                 'rating' => 4.4,
                 'fasilitas' => ['Taman', 'Museum', 'Pemandu', 'Area Parkir']
             ],
@@ -232,8 +233,8 @@ class WisataController extends Controller
                 'harga' => 'Rp 15.000',
                 'jam_buka' => '08:00 - 17:00',
                 'gambar' => '/images/tukad-cepung-gambar2.jpg',
-                'gambar2' => '/images/tukad-cepung-gambar2.jpg',
-                'gambar3' => '/images/tukad-cepung-gambar2.jpg',
+                'gambar2' => '/images/tukad_cepung_bali17.jpg',
+                'gambar3' => '/images/tukadcepungaeshtetik.jpg',
                 'rating' => 4.8,
                 'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Spot Foto']
             ],
@@ -245,9 +246,9 @@ class WisataController extends Controller
                 'kategori' => 'Pantai',
                 'harga' => 'Rp 15.000',
                 'jam_buka' => '08:00 - 18:00',
-                'gambar' => '/images/virgin-beach-karangasem.jpg',
-                'gambar2' => '/images/virgin-beach-karangasem.jpg',
-                'gambar3' => '/images/virgin-beach-karangasem.jpg',
+                'gambar' => '/images/virginbeachhotel.jpg',
+                'gambar2' => '/images/virgin_beach3.jpg',
+                'gambar3' => '/images/virgin-beach1.jpg',
                 'rating' => 4.8,
                 'fasilitas' => ['Parkir', 'Toilet', 'Warung Makan', 'Sewa Kursi']
             ],
@@ -259,9 +260,9 @@ class WisataController extends Controller
                 'kategori' => 'Budaya',
                 'harga' => 'Gratis',
                 'jam_buka' => '08:00 - 17:00',
-                'gambar' => '/images/Desa-Adat-Tenganan-selamatdatang.jpg',
-                'gambar2' => '/images/Desa-tenganan-Perang-Pandang-.jpg',
-                'gambar3' => '/images/Desa-Adat-tenganan-lastpict.jpg',
+                'gambar' => '/images/Desa-tenganan-Perang-Pandang-.jpg',
+                'gambar2' => '/images/Desa-Adat-tenganan-lastpict.jpg',
+                'gambar3' => '/images/Desa-Tengan-Tradisional-Saat-Perang-Pandan.jpg',
                 'rating' => 4.7,
                 'fasilitas' => ['Area Parkir', 'Toilet', 'Warung', 'Pemandu']
             ],
@@ -274,15 +275,13 @@ class WisataController extends Controller
                 'harga' => 'Rp 35.000',
                 'jam_buka' => '08:00 - 19:00',
                 'gambar' => '/images/taman-ujung-sukasad1.jpg',
-                'gambar2' => '/images/taman-ujung-sukasada2.jpg',
-                'gambar3' => '/images/taman-ujung-sukasada3.jpg',
+                'gambar2' => '/images/tamanujung-bali.jpg',
+                'gambar3' => '/images/taman-ujung-sukasada2.jpg',
                 'rating' => 4.6,
                 'fasilitas' => ['Kolam', 'Area Foto', 'Toilet', 'Parkir']
             ]
-
         ];
 
-        // Cari wisata berdasarkan id
         $item = null;
         foreach ($wisata as $w) {
             if ($w['id'] == $id) {
@@ -296,5 +295,22 @@ class WisataController extends Controller
         }
 
         return view('detail', ['wisata' => $item]);
+    }
+
+    // TAMBAHKAN METHOD INI
+    public function storeKomentar(Request $request)
+    {
+        $request->validate([
+            'wisata_id' => 'required|integer',
+            'content' => 'required|string|max:500',
+        ]);
+
+        $komentar = new Comment();
+        $komentar->wisata_id = $request->wisata_id;
+        $komentar->user_id = auth()->id();
+        $komentar->content = $request->content;
+        $komentar->save();
+
+        return redirect()->back()->with('success', 'Komentar berhasil dikirim!');
     }
 }

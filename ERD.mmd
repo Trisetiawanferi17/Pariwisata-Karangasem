@@ -1,0 +1,58 @@
+erDiagram
+    %% Current Database Schema - Pariwisata Karangasem
+    %% Only User model/table exists. Wisata data hardcoded.
+    
+    USERS {
+        int id PK
+        string name
+        string email UK
+        timestamp email_verified_at
+        string password
+        string phone
+        text address
+        string avatar
+        string remember_token
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    SESSIONS {
+        string id PK
+        int user_id FK
+        string ip_address
+        text user_agent
+        longtext payload
+        int last_activity
+    }
+    
+    %% Standard Laravel tables (infra)
+    PASSWORD_RESET_TOKENS {
+        string email PK
+        string token
+        timestamp created_at
+    }
+    
+    %% Relationships
+    USERS ||--o{ SESSIONS : has
+    
+    %% PROPOSED: Based on hardcoded WisataController data
+    %% WISATA {
+    %%     int id PK
+    %%     string nama
+    %%     text deskripsi
+    %%     string lokasi
+    %%     string kategori
+    %%     string harga
+    %%     string jam_buka
+    %%     string gambar
+    %%     string gambar2
+    %%     string gambar3
+    %%     float rating
+    %%     json fasilitas
+    %%     timestamp created_at
+    %%     timestamp updated_at
+    %% }
+    %% 
+    %% USERS ||--o{ WISATA : "favorites" %% (future 1:N)
+    
+    NOTE: "Current ERD: Authentication only.\nWisata hardcoded - consider DB migration.\nPaste to: mermaid.live/edit"

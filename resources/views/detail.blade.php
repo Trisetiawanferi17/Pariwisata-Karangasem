@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<x-navbar></x-navbar>
+
 
 <!-- Detail Section -->
 <section class="py-5">
@@ -137,7 +137,12 @@
     </div>
 </section>
 
-<x-footer></x-footer>
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+        <small>&copy; 2024 Pesona Karangasem. All rights reserved.</small>
+    </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
