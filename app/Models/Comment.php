@@ -2,20 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-    // Mengizinkan field ini diisi secara massal
-    protected $fillable = ['user_id', 'wisata_id', 'content'];
+    use HasFactory;
 
-    /**
-     * Relasi balik ke model User.
-     * Satu komentar ditulis oleh satu pengguna (User).
-     */
-    public function user(): BelongsTo
+    protected $fillable = [
+        'wisata_id',
+        'user_id',
+        'content',
+    ];
+
+    public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function wisata()
+    {
+        return $this->belongsTo(Wisata::class);
     }
 }

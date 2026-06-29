@@ -25,7 +25,17 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('success', 'Selamat datang kembali!');
+
+            $user = Auth::user();
+
+            // CEK APAKAH USER ADALAH ADMIN
+            // Jika email mengandung 'admin' ATAU email persis 'admin@pesona.com'
+            if ($user->email === 'admin@pesona.com' || str_contains($user->email, 'admin')) {
+                return redirect()->route('admin.dashboard')->with('success', 'Selamat datang di Dashboard Admin!');
+            }
+
+            // Jika user biasa, arahkan ke halaman utama
+            return redirect()->intended('/')->with('success', 'Selamat datang kembali, ' . $user->name . '!');
         }
 
         return back()->withErrors([
