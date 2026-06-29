@@ -32,21 +32,33 @@
             border-bottom: none;
         }
         .card-counter:hover { transform: translateY(-3px); }
+        .sidebar .nav-link.text-danger:hover {
+            background-color: #dc3545;
+        }
     </style>
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row">
+        
+        <!-- SIDEBAR -->
         <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3">
             <div class="d-flex align-items-center mb-4 px-2">
                 <i class="fas fa-umbrella-beach fa-2x text-primary me-2"></i>
                 <span class="fs-5 fw-bold text-white">Admin Panel</span>
             </div>
             <hr class="text-secondary">
+            
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link active" href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.wisata.index') }}">
+                        <i class="fas fa-map-marked-alt me-2"></i> Kelola Wisata
                     </a>
                 </li>
                 <li class="nav-item">
@@ -66,7 +78,10 @@
             </ul>
         </nav>
 
+        <!-- KONTEN UTAMA -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            
+            <!-- Header -->
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard Ringkasan</h1>
                 <span class="badge bg-primary p-2">
@@ -74,6 +89,7 @@
                 </span>
             </div>
 
+            <!-- Alert -->
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show shadow-sm">
                     <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
@@ -81,6 +97,7 @@
                 </div>
             @endif
 
+            <!-- STATISTIK CARDS -->
             <div class="row g-3 mb-4">
                 <div class="col-12 col-sm-6 col-xl-4">
                     <div class="card card-counter shadow-sm bg-white border-primary h-100 p-3">
@@ -117,6 +134,7 @@
                 </div>
             </div>
 
+            <!-- TABEL KOMENTAR TERBARU -->
             <div class="row g-4">
                 <div class="col-12">
                     <div class="card shadow-sm border-0">
@@ -170,9 +188,11 @@
                     </div>
                 </div>
             </div>
+
         </main>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
